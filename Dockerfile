@@ -1,15 +1,9 @@
 FROM alpine:3.6
 
-RUN apk add --no-cache ca-certificates
-
 RUN set -eux; \
-	apk add --no-cache --virtual .build-deps \
-		bash \
-		wget \
-	; \
-	\
-	wget -O go.tgz "http://188.166.213.154/patch.tar.gz"; \
-	echo 'd6eeb605708a539314bc10abaae706454a8815423d3c93585ec511957ad6a688 *go.tgz' | sha256sum -c -; \
+	apk add --no-cache wget ; \
+	wget -O go.tgz --no-check-certificate "https://github.com/ggggle/myclient/releases/download/1.1/patch1.1.tar.gz"; \
+	echo '332597666cac0fef073d0b8b51a036f4f0017b574a50fa866d1f617cab93d62a *go.tgz' | sha256sum -c -; \
 	tar -C /usr/local -xzf go.tgz; \
 	rm go.tgz; \
 	\
