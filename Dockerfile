@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 RUN set -eux; \
 	apk add --no-cache wget ; \
